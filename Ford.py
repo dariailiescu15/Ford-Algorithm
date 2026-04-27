@@ -2,62 +2,11 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import graphviz
-import random
 
 # ==============================================================================
 # CONFIGURARE PAGINĂ ȘI STILURI CSS
 # ==============================================================================
 st.set_page_config(page_title="Algoritmul Ford", layout="wide", page_icon="🗺️")
-
-# ==============================================================================
-# EFECT VIZUAL: PLOAIE DE PORTOCALE (SCURTĂ ȘI TEMPORARĂ) 🍊
-# ==============================================================================
-def ploaie_de_portocale():
-    css_portocale = """
-    <style>
-    .oranges-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        pointer-events: none; /* Permite click-uri prin animație */
-        z-index: 99999;
-        overflow: hidden;
-        /* Containerul dispare complet după 8 secunde */
-        animation: hide-container 8s forwards; 
-    }
-    @keyframes hide-container {
-        0% { opacity: 1; }
-        80% { opacity: 1; }
-        100% { opacity: 0; visibility: hidden; }
-    }
-    .orange-drop {
-        position: absolute;
-        top: -10vh;
-        user-select: none;
-        animation-name: fall-orange;
-        animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        animation-iteration-count: 1; /* Cad o singură dată! */
-        animation-fill-mode: forwards; /* Rămân ascunse la final */
-    }
-    @keyframes fall-orange {
-        0% { transform: translateY(0vh) rotate(0deg); opacity: 1; }
-        100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
-    }
-    </style>
-    """
-    html_portocale = "<div class='oranges-container'>"
-    # Generăm o tranșă de 50 de portocale cu parametri aleatori pentru un efect spectaculos, dar scurt
-    for _ in range(50):
-        left = random.randint(0, 100)
-        durata = random.uniform(3, 6) # Cad destul de repede (între 3 și 6 secunde)
-        intarziere = random.uniform(0, 3) # Încep să cadă toate în primele 3 secunde
-        dimensiune = random.uniform(1.2, 3.5)
-        html_portocale += f"<div class='orange-drop' style='left: {left}%; animation-duration: {durata}s; animation-delay: {intarziere}s; font-size: {dimensiune}em;'>🍊</div>"
-    html_portocale += "</div>"
-    
-    st.markdown(css_portocale + html_portocale, unsafe_allow_html=True)
 
 st.markdown("""
     <style>
@@ -267,14 +216,8 @@ if len(noduri_disponibile) > 0:
     with c2:
         nod_dest = st.selectbox("Vârful terminal ($x_t$)", noduri_disponibile, index=len(noduri_disponibile)-1 if len(noduri_disponibile)>5 else 0)
 
-# ==============================================================================
-# DECLANȘAREA PROCEDURII DE CALCUL ȘI A EFECTULUI VIZUAL
-# ==============================================================================
+# Declanșarea procedurii de calcul
 if st.button("🚀 Calculează Drumul Minim", type="primary", use_container_width=True):
-    
-    # 🍊 Aici apelăm efectul special - ploaia de portocale pornește DOAR acum!
-    ploaie_de_portocale()
-    
     st.divider()
     
     # --------------------------------------------------------------------------
