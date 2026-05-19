@@ -1,4 +1,5 @@
-%%{init: {"flowchart": {"nodeSpacing": 20, "rankSpacing": 30}}}%%
+```mermaid
+%%{init: {"flowchart": {"nodeSpacing": 15, "rankSpacing": 25}}}%%
 graph TD
     %% Definirea stilurilor cu text negru fortat pentru vizibilitate maxima pe GitHub
     classDef ML fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000000;
@@ -34,3 +35,4 @@ graph TD
     I --> J{Flux Maxim Livrat <br> < <br> Cererea Previzionată?}:::Decizie
     J -- Da --> K[Deficit Structural: Criză Sistemică <br><br> Validare TBTF: NVIDIA este <br> Single Point of Failure]:::Criza
     J -- Nu --> L[Fără Deficit: <br> Echilibru Sustenabil al pieței]:::Echilibru
+```
