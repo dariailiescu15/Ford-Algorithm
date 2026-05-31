@@ -24,7 +24,6 @@ Acest repository conține implementări educaționale ale unor algoritmi clasici
 
 ---
 
-## 📁 Structura proiectului
 
 
 Copyright (c) 2026 
